@@ -1,0 +1,496 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BgArt/bg1.png" type="Texture" id=2]
+[ext_resource path="res://passive.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BgArt/ladder.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://BgArt/boat.png" type="Texture" id=6]
+[ext_resource path="res://TouchButton.gd" type="Script" id=7]
+[ext_resource path="res://Interface.gd" type="Script" id=8]
+[ext_resource path="res://BgArt/lift/wheel.png" type="Texture" id=9]
+[ext_resource path="res://BgArt/lift/support.png" type="Texture" id=10]
+[ext_resource path="res://liftkey.gd" type="Script" id=11]
+[ext_resource path="res://BgArt/wire.png" type="Texture" id=12]
+[ext_resource path="res://BgArt/Pipes/pipelong.png" type="Texture" id=13]
+[ext_resource path="res://BgArt/Pipes/pipecon.png" type="Texture" id=14]
+[ext_resource path="res://BgArt/Pipes/pipecon2.png" type="Texture" id=15]
+[ext_resource path="res://BgArt/Pipes/pipebend.png" type="Texture" id=16]
+[ext_resource path="res://BgArt/ground.png" type="Texture" id=17]
+[ext_resource path="res://BgArt/lift/gear.png" type="Texture" id=18]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill2.png" type="Texture" id=19]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill5.png" type="Texture" id=20]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill.png" type="Texture" id=21]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill1.png" type="Texture" id=22]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill4.png" type="Texture" id=23]
+[ext_resource path="res://BgArt/Pipes/oilspill/oilspill3.png" type="Texture" id=24]
+[ext_resource path="res://splash.gd" type="Script" id=25]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 19 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "splash",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "fix",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "drop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 109.753, -17.5755 ), Vector2( 123.387, -19.2845 ), Vector2( 125.241, -15.498 ), Vector2( 125.241, -15.498 ), Vector2( 288.774, 401.591 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -51.6695, -19.9757, -19.9757, -19.9757, -19.9757, -19.9757 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 1.6, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.536104, 0.536104 ), Vector2( 0.536104, 0.536104 ), Vector2( 0.737656, 0.737656 ), Vector2( 0.73, 1.6 ), Vector2( 0.73, 1 ), Vector2( 0.73, 1 ), Vector2( 0.73, 0.958 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="Animation" id=5]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("lift:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7.37646, 61.4709 ), Vector2( 727.105, -249.445 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lift:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 158.639, 27.7336 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+[sub_resource type="RectangleShape2D" id=8]
+
+[sub_resource type="Animation" id=9]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, -360.0 ]
+}
+
+[node name="main" type="Node2D"]
+position = Vector2( 134.42, 463.322 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -673.789, -38.2326 )
+scale = Vector2( 1.52016, 1.52016 )
+
+[node name="passive" parent="." instance=ExtResource( 3 )]
+position = Vector2( -22.3202, 0 )
+
+[node name="Ttext" parent="passive/scene1" index="1"]
+frame = 0
+
+[node name="Area2D" parent="passive/scene1" index="2"]
+position = Vector2( -626.559, 18.4706 )
+
+[node name="eyes" parent="passive/scene1" index="4"]
+position = Vector2( 236.62, 31.8527 )
+
+[node name="NPC" parent="passive" index="1"]
+position = Vector2( -479.201, -5.63381 )
+
+[node name="Anim" parent="passive/NPC" index="1"]
+frame = 4
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ground" type="StaticBody2D" parent="Background"]
+scale = Vector2( 1.76, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/ground"]
+material = SubResource( 1 )
+position = Vector2( 98.1837, 164.898 )
+polygon = PoolVector2Array( -1010.68, 55.7268, -942.168, -582.583, -937.195, 55.7219, 1859.84, 55.5345, 1856.7, 128.969, -999.873, 103.366 )
+one_way_collision_margin = 0.0
+
+[node name="wire4" type="Sprite" parent="Background/ground"]
+position = Vector2( 984.318, 221.103 )
+rotation = 1.5708
+scale = Vector2( -0.54814, -19.4183 )
+texture = ExtResource( 12 )
+
+[node name="ground" type="Sprite" parent="Background/ground"]
+position = Vector2( 866.352, 258.925 )
+scale = Vector2( 0.568182, 1 )
+texture = ExtResource( 17 )
+
+[node name="ground2" type="Sprite" parent="Background/ground"]
+position = Vector2( -816.629, 258.925 )
+scale = Vector2( 0.568182, 1 )
+texture = ExtResource( 17 )
+
+[node name="floor" type="Sprite" parent="Background/ground"]
+position = Vector2( 1337.84, 610.807 )
+rotation = 3.14159
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 500, 3000, 770 )
+
+[node name="floor2" type="Sprite" parent="Background/ground"]
+position = Vector2( -1599.31, 610.813 )
+rotation = -0.00349066
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 500, 3000, 770 )
+
+[node name="foreground" type="ParallaxBackground" parent="Background"]
+layer = 2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/foreground"]
+motion_scale = Vector2( 1.5, 1 )
+
+[node name="boat" type="Sprite" parent="Background/foreground/ParallaxLayer"]
+position = Vector2( 1614.83, 807.348 )
+rotation = 3.46622
+scale = Vector2( 2.19374, -1.58636 )
+texture = ExtResource( 6 )
+
+[node name="bg" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/bg"]
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="bg1" type="Sprite" parent="Background/bg/ParallaxLayer"]
+position = Vector2( 2025.74, 14.3431 )
+rotation = -1.54844
+scale = Vector2( 1.32876, 1.21622 )
+z_index = -1
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 699, 900 )
+
+[node name="bg2" type="Sprite" parent="Background/bg/ParallaxLayer"]
+position = Vector2( -2098.88, -83.603 )
+rotation = -1.54844
+scale = Vector2( 1.32876, 1.21622 )
+z_index = -1
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 699, 900 )
+
+[node name="pipes" type="Node2D" parent="Background"]
+position = Vector2( 163.767, -301.274 )
+rotation = 0.372258
+
+[node name="pipecon" type="Sprite" parent="Background/pipes"]
+position = Vector2( 375.312, -222.537 )
+rotation = 4.6701
+scale = Vector2( 0.369041, 0.369041 )
+z_index = -1
+texture = ExtResource( 14 )
+offset = Vector2( 30.9944, -59.6509 )
+
+[node name="pipecon3" type="Sprite" parent="Background/pipes"]
+position = Vector2( 451.382, -127.277 )
+rotation = 6.29191
+scale = Vector2( 0.425635, 0.400123 )
+z_index = -1
+texture = ExtResource( 14 )
+offset = Vector2( 30.9944, -59.6509 )
+
+[node name="pipelong" type="Sprite" parent="Background/pipes"]
+position = Vector2( 537.604, -244.051 )
+rotation = -1.49856
+scale = Vector2( 0.349998, 0.188351 )
+texture = ExtResource( 13 )
+
+[node name="pipelong2" type="Sprite" parent="Background/pipes"]
+position = Vector2( 245.822, -157.673 )
+rotation = -0.0684596
+scale = Vector2( 0.435541, 0.188139 )
+texture = ExtResource( 13 )
+
+[node name="pipecon2" type="Sprite" parent="Background/pipes"]
+position = Vector2( 131.54, -118.528 )
+rotation = 1.54828
+scale = Vector2( 0.300204, 0.300204 )
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 23, 23 )
+
+[node name="pipebend" type="Sprite" parent="Background/pipes"]
+position = Vector2( 129.885, -34.7414 )
+rotation = 6.2451
+scale = Vector2( 0.300204, 0.300204 )
+texture = ExtResource( 16 )
+flip_v = true
+
+[node name="pipebend2" type="Sprite" parent="Background/pipes"]
+position = Vector2( 363.995, -205.001 )
+rotation = 9.45811
+scale = Vector2( 0.255755, 0.247241 )
+texture = ExtResource( 16 )
+flip_v = true
+
+[node name="splash" type="AnimatedSprite" parent="Background/pipes"]
+position = Vector2( 109.753, -17.5755 )
+rotation = -0.901803
+scale = Vector2( 0.536104, 0.536104 )
+z_index = -1
+frames = SubResource( 2 )
+animation = "fix"
+playing = true
+script = ExtResource( 25 )
+
+[node name="drop" type="AnimationPlayer" parent="Background/pipes/splash"]
+anims/drop = SubResource( 3 )
+
+[node name="wait" type="Timer" parent="Background/pipes/splash"]
+one_shot = true
+
+[node name="ladder" type="Sprite" parent="Background"]
+position = Vector2( 940.992, 69.8629 )
+scale = Vector2( 0.332532, 0.332532 )
+texture = ExtResource( 4 )
+
+[node name="EndLift" type="Node2D" parent="."]
+position = Vector2( 1454.76, 58.4324 )
+
+[node name="TouchButton" type="Area2D" parent="EndLift"]
+position = Vector2( 1431.3, 129.703 )
+script = ExtResource( 7 )
+
+[node name="button" type="Sprite" parent="EndLift/TouchButton"]
+position = Vector2( -1.51147, 0.755737 )
+texture = ExtResource( 5 )
+
+[node name="detect" type="CollisionShape2D" parent="EndLift/TouchButton"]
+scale = Vector2( 4.78004, 3.88127 )
+shape = SubResource( 4 )
+
+[node name="Label" type="Label" parent="EndLift/TouchButton"]
+visible = false
+margin_left = -36.0562
+margin_top = -54.8275
+margin_right = 42.1488
+margin_bottom = -23.8275
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Find the key"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="activate" type="AnimationPlayer" parent="EndLift"]
+anims/On = SubResource( 5 )
+
+[node name="lift" type="StaticBody2D" parent="EndLift"]
+position = Vector2( 223.295, -31.8039 )
+
+[node name="lifepad" type="CollisionShape2D" parent="EndLift/lift"]
+position = Vector2( 1768.91, 186.555 )
+shape = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="EndLift/lift/lifepad"]
+position = Vector2( -16.6516, -2.52332 )
+scale = Vector2( 5.11569, 1 )
+texture = ExtResource( 5 )
+
+[node name="wire3" type="Sprite" parent="EndLift/lift/lifepad"]
+position = Vector2( -118.195, -71.206 )
+rotation = -3.13474
+scale = Vector2( 0.108252, -0.892156 )
+texture = ExtResource( 12 )
+
+[node name="OnLift" type="Area2D" parent="EndLift/lift"]
+position = Vector2( 1777.61, 84.0921 )
+scale = Vector2( 16.6001, 2.81589 )
+
+[node name="OnLift" type="CollisionShape2D" parent="EndLift/lift/OnLift"]
+position = Vector2( -2.11073, -15.7612 )
+scale = Vector2( 0.677159, 4.1662 )
+shape = SubResource( 7 )
+
+[node name="liftkey" type="Area2D" parent="EndLift"]
+position = Vector2( 1014.07, 135.966 )
+script = ExtResource( 11 )
+
+[node name="key" type="CollisionShape2D" parent="EndLift/liftkey"]
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="EndLift/liftkey/key"]
+texture = ExtResource( 5 )
+
+[node name="mechanical" type="Node2D" parent="EndLift"]
+rotation = -6.28319
+
+[node name="wheel" type="Sprite" parent="EndLift/mechanical"]
+position = Vector2( 1529.82, 100.422 )
+rotation = 1.25664
+texture = ExtResource( 9 )
+offset = Vector2( 3.29443, 29.2512 )
+
+[node name="spin" type="AnimationPlayer" parent="EndLift/mechanical/wheel"]
+anims/liftspin = SubResource( 9 )
+
+[node name="support" type="Sprite" parent="EndLift/mechanical"]
+position = Vector2( 1533.06, 126.867 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="gear" type="Sprite" parent="EndLift/mechanical"]
+position = Vector2( 1458.37, -47.9026 )
+rotation = -2.51327
+scale = Vector2( 0.359678, 0.359678 )
+texture = ExtResource( 18 )
+offset = Vector2( 13.5361, -0.118042 )
+
+[node name="spin2" type="AnimationPlayer" parent="EndLift/mechanical/gear"]
+anims/liftspin = SubResource( 10 )
+
+[node name="gear2" type="Sprite" parent="EndLift/mechanical"]
+position = Vector2( 1555.26, 5.06764 )
+rotation = -1.03006
+scale = Vector2( 0.202986, 0.202986 )
+texture = ExtResource( 18 )
+offset = Vector2( 12.7363, -0.609131 )
+
+[node name="spin3" type="AnimationPlayer" parent="EndLift/mechanical/gear2"]
+anims/liftspin = SubResource( 11 )
+
+[node name="wires" type="Node2D" parent="EndLift/mechanical"]
+
+[node name="wheel wire" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1533.19, -18.1013 )
+rotation = -1.12412
+scale = Vector2( 0.0888767, 0.872812 )
+z_index = -1
+texture = ExtResource( 12 )
+
+[node name="wheel wire2" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1521.55, -3.46606 )
+rotation = -1.12412
+scale = Vector2( 0.0888767, 0.872812 )
+z_index = -1
+texture = ExtResource( 12 )
+
+[node name="wheel wire4" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1550.85, 58.1854 )
+rotation = -2.83819
+scale = Vector2( 0.0888767, 1.08672 )
+z_index = -1
+texture = ExtResource( 12 )
+
+[node name="wheel wire3" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1535.7, 57.3685 )
+rotation = -2.83391
+scale = Vector2( 0.0888767, 0.872812 )
+z_index = -1
+texture = ExtResource( 12 )
+
+[node name="wire" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1706.97, 42.0101 )
+rotation = -1.85641
+scale = Vector2( 0.0996788, 3.82609 )
+texture = ExtResource( 12 )
+
+[node name="wire2" type="Sprite" parent="EndLift/mechanical/wires"]
+position = Vector2( 1711.74, 53.6049 )
+rotation = -1.85641
+scale = Vector2( 0.0996788, 3.82609 )
+texture = ExtResource( 12 )
+
+[node name="Interface" type="Node2D" parent="."]
+script = ExtResource( 8 )
+[connection signal="animation_finished" from="Background/pipes/splash/drop" to="Background/pipes/splash" method="_on_drop_animation_finished"]
+[connection signal="mouse_entered" from="EndLift/TouchButton" to="EndLift/TouchButton" method="_on_TouchButton_mouse_entered"]
+[connection signal="mouse_exited" from="EndLift/TouchButton" to="EndLift/TouchButton" method="_on_TouchButton_mouse_exited"]
+[connection signal="body_entered" from="EndLift/lift/OnLift" to="EndLift/TouchButton" method="_on_OnLift_body_entered"]
+[connection signal="body_entered" from="EndLift/liftkey" to="EndLift/liftkey" method="_on_liftkey_body_entered"]
+
+[editable path="passive"]
